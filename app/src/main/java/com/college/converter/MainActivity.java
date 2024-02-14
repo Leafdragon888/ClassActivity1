@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros");
+            resultView.setText( resultFloat + " Euros" );
         }
     }
 }
