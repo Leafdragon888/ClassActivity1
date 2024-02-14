@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void convertCurrency(View view) {
         Log.i("MainActivity", "convertCurrency method started");
-    }
+
 
         EditText inputView = binding.entryId;
         String inputAmount = inputView.getText().toString();
