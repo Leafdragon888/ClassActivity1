@@ -31,16 +31,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Log.i("MainActivity", "onCreate method started");
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.convertButton.setOnClickListener(view -> convertCurrency(view));
+
         Log.i("MainActivity", "onCreate method ended");
     }
 
     public void convertCurrency(View view) {
         Log.i("MainActivity", "convertCurrency method started");
+    }
+
         EditText inputView = binding.entryId;
         String inputAmount = inputView.getText().toString();
 
