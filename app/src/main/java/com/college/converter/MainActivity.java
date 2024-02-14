@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.college.converter.databinding.ActivityMainBinding;
 
 /*
     TODOs:
@@ -25,34 +25,32 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.i("MainActivity", "onCreate() method called");
-        Button buttonConvert = findViewById(R.id.convertButton);
+        Log.i("MainActivity", "onCreate method started");
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        buttonConvert.setOnClickListener( view ->  {
-            convertCurrency(view);
-        } );
-        Log.i("MainActivity", "onCreate() method finished");
+        binding.convertButton.setOnClickListener(view -> convertCurrency(view));
+        Log.i("MainActivity", "onCreate method ended");
     }
 
     public void convertCurrency(View view) {
-        Log.i("MainActivity", "convertCurrency() method called");
-        EditText inputView = findViewById(R.id.entryId);
-
+        Log.i("MainActivity", "convertCurrency method started");
+        EditText inputView = binding.entryId;
         String inputAmount = inputView.getText().toString();
 
-        TextView resultView = findViewById(R.id.resultId);
+        TextView resultView = binding.resultId;
 
         if (!inputAmount.isEmpty()) {
             Float inputAmountDecimal = Float.valueOf(inputAmount);
-
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
-
-            resultView.setText( resultFloat + " Euros" );
+            resultView.setText(resultFloat + " Euros");
         }
-        Log.i("MainActivity", "convertCurrency() method finished");
+        Log.i("MainActivity", "convertCurrency method ended");
     }
 }
